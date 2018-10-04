@@ -1,8 +1,8 @@
 import * as http from "http";
 import * as next from "next";
-import { Routes } from "../..";
+import * as makeRoutes from "../..";
 
-const routes = new Routes();
+const routes = makeRoutes();
 
 routes
   .add("login")
