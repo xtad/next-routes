@@ -44,7 +44,13 @@ export interface Registry {
   Router: Router;
 }
 
-export default class Routes implements Registry {
+export interface RouteOptions {
+  Link?: ComponentType<LinkProps>;
+  Router?: Router;
+}
+
+export class Routes implements Registry {
+  constructor(options?: RouteOptions);
   getRequestHandler(app: Server, custom?: HTTPHandler): HTTPHandler;
   add(name: string, pattern?: string, page?: string): this;
   add(pattern: string, page: string): this;
@@ -52,3 +58,5 @@ export default class Routes implements Registry {
   Link: ComponentType<LinkProps>;
   Router: Router;
 }
+
+export default function(options?: RouteOptions): Routes;
